@@ -15,6 +15,9 @@ const AppProvider = ({ children }) => {
     isError: false,
     products: [],
     featureProducts: [],
+    isSingleLoading: false,
+    isSingleError: false,
+    singleProduct: {},
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -35,12 +38,25 @@ const AppProvider = ({ children }) => {
     }
   }, []);
 
+  const getSingleProduct = async (url) => {
+    dispatch({ type: "SET_SINGLE_PAGE_LOADING" });
+    try {
+      let response = await fetch(url);
+      let singleProduct = await response.json();
+      dispatch({ type: "SET_SINGLE_PRODUCT", payload: singleProduct });
+    } catch (error) {
+      alert("error encountered while fetching data from API");
+    }
+  };
+
   useEffect(() => {
     GetFeaturedProducts(API);
   }, [GetFeaturedProducts]);
 
   return (
-    <AppContext.Provider value={{ ...state }}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ ...state, getSingleProduct }}>
+      {children}
+    </AppContext.Provider>
   );
 };
 

@@ -22,6 +22,24 @@ export const ProductReducer = (state, action) => {
         ),
       };
 
+    case "SET_SINGLE_PAGE_LOADING":
+      return {
+        ...state,
+        isSingleLoading: true,
+      };
+
+    case "SET_SINGLE_PRODUCT":
+      return {
+        ...state,
+        isSingleLoading: false,
+        singleProduct: action.payload,
+      };
+    case "SINGLE_ERROR":
+      return {
+        ...state,
+        isSingleError: true,
+      };
+
     default:
       return state;
   }

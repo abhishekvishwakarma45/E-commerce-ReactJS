@@ -15,7 +15,7 @@ const FeatureProducts = () => {
         <h2>New Arrivals</h2>
         <h1>Featured Products</h1>
       </div>
-      <div className="feature-Product-container grid  md:grid gap-4   lg:flex justify-center items-center">
+      <div className="feature-Product-container grid md:grid  lg:flex">
         {featureProducts.map((current) => {
           return <Product key={current.id} {...current} />;
         })}

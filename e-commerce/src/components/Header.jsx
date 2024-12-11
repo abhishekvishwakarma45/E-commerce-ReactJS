@@ -31,7 +31,7 @@ const HeaderNavbar = () => {
             </li>
             <li className="m-4">
               <NavLink to="/cart" className="">
-                <IoMdCart className="text-xl" />
+                {/* <IoMdCart className="text-xl" /> */}Cart
                 <span className="text-red-500">(10)</span>
               </NavLink>
             </li>
