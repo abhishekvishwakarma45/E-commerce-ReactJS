@@ -38,7 +38,7 @@ const AppProvider = ({ children }) => {
     }
   }, []);
 
-  const getSingleProduct = async (url) => {
+  const getSingleProduct = useCallback(async (url) => {
     dispatch({ type: "SET_SINGLE_PAGE_LOADING" });
     try {
       let response = await fetch(url);
@@ -47,7 +47,7 @@ const AppProvider = ({ children }) => {
     } catch (error) {
       alert("error encountered while fetching data from API");
     }
-  };
+  }, []);
 
   useEffect(() => {
     GetFeaturedProducts(API);

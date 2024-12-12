@@ -21,7 +21,7 @@ const HeaderNavbar = () => {
         <div className="navbar-right-items">
           <ul className="hidden capitalize bold text-black md:hidden lg:flex items-center">
             <li className="m-4">
-              <NavLink to="/product">Products</NavLink>
+              <NavLink to="/products">Products</NavLink>
             </li>
             <li className="m-4">
               <NavLink to="/contact">Contact</NavLink>

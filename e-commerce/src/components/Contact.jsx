@@ -27,7 +27,7 @@ export default function Contact() {
           <button>Submit</button>
         </div>
       </div>
-      <Footer /> {/* Render the Footer component here */}
+      <Footer />
     </Fragment>
   );
 }
