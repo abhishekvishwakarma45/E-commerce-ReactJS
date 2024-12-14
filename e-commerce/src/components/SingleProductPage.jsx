@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import { useProductContext } from "../context/ProductContext";
 import { Star } from "./Star";
 import { FormatPrice } from "../Helpers/FormatPrice";
-import { Color } from "./ProductColor";
-export default function SingleProduct() {
+import { ColorAndQuantity } from "./ColorAndQuantity";
+export default function SingleProductPage() {
   const { id } = useParams();
   const { getSingleProduct, isSingleLoading, singleProduct } =
     useProductContext();
@@ -29,7 +29,7 @@ export default function SingleProduct() {
   } = singleProduct || {};
 
   const API = `https://api.pujakaitem.com/api/products`;
-  const [mainImage, setMainImage] = useState(image[0] || "");
+  const [mainImage, setMainImage] = useState(image[0]);
 
   useEffect(() => {
     if (image.length > 0 && !mainImage) {
@@ -38,7 +38,11 @@ export default function SingleProduct() {
   }, [image, mainImage]);
 
   if (isSingleLoading) {
-    return <h1>Loading...</h1>;
+    return (
+      <div className="spin-loader">
+        <span className="loader"></span>
+      </div>
+    );
   }
 
   if (!singleProduct) {
@@ -88,22 +92,9 @@ export default function SingleProduct() {
               <Star stars={stars} reviews={reviews} />
             </p>
           </div>
-          <div className="flex text-center items-center ">
-            <button className="inc-dec-btn" onClick={() => setCount(count + 1)}>
-              +
-            </button>
-            <h1 className="font-bold text-xl text-center"> {count}</h1>
-            <button
-              className="inc-dec-btn"
-              onClick={() => setCount(count > 0 ? count - 1 : 0)}
-            >
-              -
-            </button>
-          </div>
           <div>
-            <Color singleProduct={singleProduct} />
+            <ColorAndQuantity singleProduct={singleProduct} />
           </div>
-          <button className="add-to-cart-btn">Add to Cart</button>
         </div>
       </div>
     </Fragment>

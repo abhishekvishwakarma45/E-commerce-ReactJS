@@ -13,11 +13,11 @@ const AppProvider = ({ children }) => {
   const initialState = {
     isLoading: false,
     isError: false,
+    singleProduct: {},
     products: [],
     featureProducts: [],
     isSingleLoading: false,
     isSingleError: false,
-    singleProduct: {},
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);

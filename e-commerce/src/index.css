@@ -1027,25 +1027,43 @@ video {
   margin-bottom: 10px;
 }
 
-.inc-dec-btn {
-  font-size: 1.5rem;
-  padding: 10px 20px;
-  margin: 0 10px;
+.inc-dec-btn-container {
+  margin-top: 20px;
+  display: flex;
+  text-align: center;
+  align-items: center;
 }
 
+.inc-dec-btn {
+  padding: 10px 20px;
+  border: 1p solid blue;
+  font-size: 1.2rem;
+}
+.inc-dec-btn svg{
+  font-weight: lighter;
+}
+
+.quantity {
+  margin: 0px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold ;
+}
+
+
 .add-to-cart-btn {
-  padding: 15px;
-  border: 1px solid black;
-  margin: 20px 0px;
+  margin-top: 20px;
+  padding: 10px 20px 10px 0px;
   background-color: black;
   color: white;
+  padding: 10px 30px;
+  border-radius: 2px;
+  font-size: 1rem;
 }
 
 .star-rating {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  /* Align stars and reviews to the start */
   font-family: Arial, sans-serif;
 }
 
@@ -1053,7 +1071,6 @@ video {
   display: flex;
   gap: 4px;
   align-items: center;
-  /* Ensure stars align properly */
 }
 
 .star svg {
@@ -1090,4 +1107,31 @@ video {
   top: 3px;
   left: 3px;
   color: white;
+}
+
+.spin-loader {
+  height: 90vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #fff;
+  border-bottom-color: #ff3d00;
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
