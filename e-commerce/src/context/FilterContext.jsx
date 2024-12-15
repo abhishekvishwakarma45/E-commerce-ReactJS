@@ -10,6 +10,11 @@ const initialState = {
   filterProducts: [],
   allProducts: [],
   sortingValue: "lowest",
+  filter: {
+    text: "",
+    category: "",
+    company: "",
+  },
 };
 
 export const FilterContextProvider = ({ children }) => {
@@ -22,22 +27,26 @@ export const FilterContextProvider = ({ children }) => {
     }
   }, [products, isLoading, isError]);
 
-  const Sorting = () => {
-    let SelectValue = document.getElementById("sort");
-    let sortedValue = SelectValue.options[SelectValue.selectedIndex].value;
-    console.log(sortedValue);
-    dispatch({
-      type: "GET_SORT_VALUE",
-      payload: sortedValue,
+  useEffect(() => {
+    dispatch({ type: "FILTER_PRODUCTS" });
+    dispatch({ type: "SORTING_PRODUCT" });
+  }, [products, state.sortingValue, state.filter]);
+
+  const SortingFn = (event) => {
+    dispatch({ type: "GET_SORT_VALUE", payload: event.target.value });
+  };
+
+  const updateFilterValue = (event) => {
+    let name = event.target.name;
+    let value = event.target.value;
+    return dispatch({
+      type: "UPDATE_FILTER_VALUE",
+      payload: { name, value },
     });
   };
 
-  useEffect(() => {
-    dispatch({ type: "SORTING_PRODUCT", payload: products });
-  }, [products, state.sortingValue]);
-
   return (
-    <FilterContext.Provider value={{ ...state, Sorting }}>
+    <FilterContext.Provider value={{ ...state, SortingFn, updateFilterValue }}>
       {children}
     </FilterContext.Provider>
   );

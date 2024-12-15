@@ -1252,16 +1252,8 @@ video {
   }
 }
 
-/* .filter-section {
-  height: 100vh;
-  width: 50vw;
-  background-color: crimson;
-  position: fixed;
-  top: 0;
-} */
-
 .filter-btn {
-  padding: 10px 30px;
+  padding: 10px;
   background-color: #000;
   color: white;
   display: flex;
@@ -1278,7 +1270,15 @@ video {
 }
 
 .sort {
-  padding: 10px 20px;
+  padding: 10px;
   background-color: black;
   color: white;
+}
+
+.filter-section {
+  height: 100vh;
+  width: 40vw;
+  background-color: crimson;
+  position: fixed;
+  top: 0;
 }

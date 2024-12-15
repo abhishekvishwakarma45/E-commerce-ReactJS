@@ -1,23 +1,41 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 
 import { Footer } from "./Footer";
 import useFilterContext from "../context/FilterContext";
 import Product from "./Product";
 import { IoFilter } from "react-icons/io5";
+
 export default function Products() {
-  const { filterProducts, Sorting } = useFilterContext();
-  console.log(filterProducts);
+  const [transform, setTransform] = useState("-100%");
+  const {
+    allProducts,
+    filterProducts,
+    SortingFn,
+    updateFilterValue,
+    filter: { text },
+  } = useFilterContext();
+
+  const getUniqueData = (data, property) => {
+    let newVal = data.map((current) => {
+      return current[property];
+    });
+    return (newVal = ["All", ...new Set(newVal)]);
+  };
+
+  const categoryData = getUniqueData(allProducts, "category");
+  const DataByCompany = getUniqueData(allProducts, "company");
+  console.log(DataByCompany);
 
   return (
     <Fragment>
       <div className="allProductContainer">
         <div className="allProducts">
           <div className="sorting-div">
-            <button className="filter-btn">
+            <button className="filter-btn" onClick={() => setTransform("0%")}>
               {<IoFilter />} <span>Filter</span>{" "}
             </button>
             <p>{filterProducts.length} Products available</p>
-            <select name="sort" id="sort" className="sort" onClick={Sorting}>
+            <select name="sort" id="sort" className="sort" onClick={SortingFn}>
               <option value="lowest">Lowest</option>
               <option value="highest">Highest</option>
               <option value="a-z">A-Z</option>
@@ -32,7 +50,50 @@ export default function Products() {
         </div>
       </div>
 
-      <div className="filter-section"></div>
+      <div
+        className="filter-section"
+        style={{ transform: `translate(${transform})` }}
+      >
+        <div className="search-bar">
+          <input
+            type="text"
+            name="text"
+            placeholder="Search here...."
+            className="search"
+            id="text"
+            value={text}
+            onChange={updateFilterValue}
+          />
+        </div>
+        <div className="filter-category">
+          <div>
+            {categoryData.map((current, index) => {
+              return (
+                <button
+                  key={index}
+                  name="category"
+                  value={current}
+                  onClick={updateFilterValue}
+                >
+                  {current}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="filterByBrand">
+          <select name="company" id="company" onChange={updateFilterValue}>
+            {DataByCompany.map((current, index) => {
+              return (
+                <option name={current} key={index} value={current}>
+                  {current}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+      </div>
 
       <Footer />
     </Fragment>
