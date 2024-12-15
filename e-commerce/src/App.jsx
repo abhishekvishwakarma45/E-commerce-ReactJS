@@ -6,6 +6,7 @@ import Contact from "./components/Contact";
 import SingleProductPage from "./components/SingleProductPage";
 import HeaderNavbar from "./components/Header";
 import Cart from "./components/Cart";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/singleproduct/:id" element={<SingleProductPage />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/error" element={<ErrorPage />} />
       </Routes>
     </Router>
   );

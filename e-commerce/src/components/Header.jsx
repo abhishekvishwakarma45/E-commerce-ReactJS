@@ -54,7 +54,7 @@ const HeaderNavbar = () => {
         </button>
         <ul className="capitalize bold text-black">
           <li className="m-4">
-            <NavLink to="/product">Products</NavLink>
+            <NavLink to="/products">Products</NavLink>
           </li>
           <li className="m-4">
             <NavLink to="/contact">Contact</NavLink>
