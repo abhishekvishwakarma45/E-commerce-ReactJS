@@ -1278,7 +1278,26 @@ video {
 .filter-section {
   height: 100vh;
   width: 40vw;
-  background-color: crimson;
+  background-color: beige;
   position: fixed;
   top: 0;
+}
+
+.color-filter-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.color-filter-section button {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.color-filter-section button svg {
+  font-size: 1.5em;
 }

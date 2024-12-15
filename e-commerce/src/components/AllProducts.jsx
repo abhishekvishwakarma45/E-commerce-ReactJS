@@ -4,8 +4,9 @@ import { Footer } from "./Footer";
 import useFilterContext from "../context/FilterContext";
 import Product from "./Product";
 import { IoFilter } from "react-icons/io5";
-
+import { FaCheck } from "react-icons/fa";
 export default function Products() {
+  const [color, setColor] = useState();
   const [transform, setTransform] = useState("-100%");
   const {
     allProducts,
@@ -19,12 +20,17 @@ export default function Products() {
     let newVal = data.map((current) => {
       return current[property];
     });
+    if (property === "colors") {
+      return (newVal = ["all", ...new Set([].concat(...newVal))]);
+      //to do the same thing we have Array.flat method
+      // newVal = newVal.flat();
+    }
     return (newVal = ["All", ...new Set(newVal)]);
   };
 
   const categoryData = getUniqueData(allProducts, "category");
   const DataByCompany = getUniqueData(allProducts, "company");
-  console.log(DataByCompany);
+  const colorData = getUniqueData(allProducts, "colors");
 
   return (
     <Fragment>
@@ -92,6 +98,24 @@ export default function Products() {
               );
             })}
           </select>
+        </div>
+
+        <div className="color-filter-section">
+          {colorData.map((current, index) => {
+            return (
+              <button
+                name="colors"
+                key={index}
+                value={current}
+                onClick={(event) => {
+                  updateFilterValue(event), setColor(current);
+                }}
+                style={{ backgroundColor: `${current}` }}
+              >
+                {color === current ? <FaCheck /> : ""}
+              </button>
+            );
+          })}
         </div>
       </div>
 
