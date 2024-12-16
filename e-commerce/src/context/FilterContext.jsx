@@ -15,6 +15,7 @@ const initialState = {
     category: "",
     company: "",
     colors: "",
+    price: 0,
   },
 };
 
@@ -46,8 +47,14 @@ export const FilterContextProvider = ({ children }) => {
     });
   };
 
+  const clearFilter = () => {
+    dispatch({ type: "CLEAR_FILTER" });
+  };
+
   return (
-    <FilterContext.Provider value={{ ...state, SortingFn, updateFilterValue }}>
+    <FilterContext.Provider
+      value={{ ...state, SortingFn, updateFilterValue, clearFilter }}
+    >
       {children}
     </FilterContext.Provider>
   );

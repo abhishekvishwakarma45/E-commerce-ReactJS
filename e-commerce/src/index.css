@@ -1281,9 +1281,16 @@ video {
   background-color: beige;
   position: fixed;
   top: 0;
+  transition: transform 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .color-filter-section {
+  height: auto;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1300,4 +1307,27 @@ video {
 
 .color-filter-section button svg {
   font-size: 1.5em;
+}
+
+.clear-btn {
+  padding: 10px 20px;
+  background-color: #4f46e5;
+  color: white;
+}
+
+.cross-btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.search-bar input {
+  height: auto;
+  width: 80%;
+  padding: 20px;
+}
+
+.filter-category {
+  display: flex;
+  flex-direction: column;
 }

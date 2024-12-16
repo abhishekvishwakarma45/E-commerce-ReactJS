@@ -1,19 +1,26 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 import { Footer } from "./Footer";
 import useFilterContext from "../context/FilterContext";
 import Product from "./Product";
 import { IoFilter } from "react-icons/io5";
 import { FaCheck } from "react-icons/fa";
+import { ImCross } from "react-icons/im";
+import { FormatPrice } from "../Helpers/FormatPrice";
+
 export default function Products() {
+  const [minPrice, setMinPrice] = useState();
+  const [maxPrice, setMaxPrice] = useState();
   const [color, setColor] = useState();
   const [transform, setTransform] = useState("-100%");
+
   const {
     allProducts,
     filterProducts,
     SortingFn,
     updateFilterValue,
-    filter: { text },
+    filter: { text, price },
+    clearFilter,
   } = useFilterContext();
 
   const getUniqueData = (data, property) => {
@@ -22,15 +29,30 @@ export default function Products() {
     });
     if (property === "colors") {
       return (newVal = ["all", ...new Set([].concat(...newVal))]);
-      //to do the same thing we have Array.flat method
-      // newVal = newVal.flat();
     }
+    if (property === "price") {
+      return (newVal = [...new Set(newVal)]);
+    }
+
     return (newVal = ["All", ...new Set(newVal)]);
+  };
+
+  let priceData = getUniqueData(allProducts, "price");
+
+  const setPrice = () => {
+    const minimumPrice = Math.min(...priceData);
+    setMinPrice(minimumPrice);
+
+    const maximumPrice = Math.max(...priceData);
+    setMaxPrice(maximumPrice);
   };
 
   const categoryData = getUniqueData(allProducts, "category");
   const DataByCompany = getUniqueData(allProducts, "company");
   const colorData = getUniqueData(allProducts, "colors");
+  useEffect(() => {
+    setPrice();
+  }, [getUniqueData]);
 
   return (
     <Fragment>
@@ -60,6 +82,11 @@ export default function Products() {
         className="filter-section"
         style={{ transform: `translate(${transform})` }}
       >
+        <div className="cross-btn">
+          <button onClick={() => setTransform("-100%")}>
+            <ImCross />
+          </button>
+        </div>
         <div className="search-bar">
           <input
             type="text"
@@ -81,6 +108,7 @@ export default function Products() {
                   value={current}
                   onClick={updateFilterValue}
                 >
+                  <br />
                   {current}
                 </button>
               );
@@ -101,6 +129,7 @@ export default function Products() {
         </div>
 
         <div className="color-filter-section">
+          <p>Color:</p>
           {colorData.map((current, index) => {
             return (
               <button
@@ -116,6 +145,24 @@ export default function Products() {
               </button>
             );
           })}
+        </div>
+
+        <div>
+          <FormatPrice price={parseInt(price)} />
+          <input
+            type="range"
+            min={minPrice}
+            max={maxPrice}
+            name="price"
+            value={price}
+            onChange={updateFilterValue}
+          />
+        </div>
+
+        <div>
+          <button name="clear" className="clear-btn" onClick={clearFilter}>
+            Clear
+          </button>
         </div>
       </div>
 

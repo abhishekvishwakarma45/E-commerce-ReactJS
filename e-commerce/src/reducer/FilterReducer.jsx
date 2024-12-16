@@ -2,7 +2,7 @@ export const FilterReducer = (state, action) => {
   const { filterProducts, sortingValue, allProducts } = state;
   let tempFilterProduct;
   let newSortData;
-  const { text, category, company, colors } = state.filter;
+  const { text, category, company, colors, price } = state.filter;
 
   switch (action.type) {
     case "SET_LOADING":
@@ -62,6 +62,18 @@ export const FilterReducer = (state, action) => {
       };
     }
 
+    case "CLEAR_FILTER":
+      return {
+        ...state,
+        filter: {
+          text: "",
+          category: "",
+          company: "",
+          colors: "",
+          price: "",
+        },
+      };
+
     case "FILTER_PRODUCTS":
       tempFilterProduct = [...allProducts];
 
@@ -88,6 +100,13 @@ export const FilterReducer = (state, action) => {
           return current.colors.includes(colors);
         });
       }
+
+      if (price) {
+        tempFilterProduct = tempFilterProduct.filter((current) => {
+          return current.price <= price;
+        });
+      }
+
       return {
         ...state,
         filterProducts: tempFilterProduct,
