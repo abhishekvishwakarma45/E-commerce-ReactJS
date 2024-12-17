@@ -1,9 +1,11 @@
 import { useCartContext } from "../context/CartContext";
+import { FormatPrice } from "../Helpers/FormatPrice";
 
 export default function CartProduct(current) {
   const { removeProduct } = useCartContext();
+
   const { id, image, name, color, price, quantity } = current;
-  // console.log(current.id);
+
   return (
     <li className="product-item">
       <div className="product-image">
@@ -18,7 +20,9 @@ export default function CartProduct(current) {
           <h3>
             <a href="#">{name}</a>
           </h3>
-          <p className="product-price">{price}</p>
+          <p className="product-price">
+            <FormatPrice price={price} />
+          </p>
         </div>
         <span>Color:</span>
         <p

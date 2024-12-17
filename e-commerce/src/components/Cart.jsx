@@ -3,8 +3,7 @@ import { useCartContext } from "../context/CartContext";
 import CartProduct from "./CartProduct";
 import { NavLink } from "react-router-dom";
 export default function Cart() {
-  const { cart } = useCartContext();
-  console.log(cart);
+  const { cart, clearCart } = useCartContext();
 
   return (
     <div
@@ -35,6 +34,11 @@ export default function Cart() {
             <p className="tax-info">
               Shipping and taxes calculated at checkout.
             </p>
+            <div className="checkout">
+              <button href="#" className="checkout-button" onClick={clearCart}>
+                Clear
+              </button>
+            </div>
             <div className="checkout">
               <a href="#" className="checkout-button">
                 Checkout

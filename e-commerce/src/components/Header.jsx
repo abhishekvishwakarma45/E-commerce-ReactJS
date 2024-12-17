@@ -3,9 +3,11 @@ import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { NavLink } from "react-router-dom";
 import { RxCross1 } from "react-icons/rx";
 import { IoMdCart } from "react-icons/io";
+import { useCartContext } from "../context/CartContext";
 
 const HeaderNavbar = () => {
   const [transform, setTransform] = useState("-100%");
+  let { cart } = useCartContext();
 
   return (
     <Fragment>
@@ -32,7 +34,7 @@ const HeaderNavbar = () => {
             <li className="m-4">
               <NavLink to="/cart" className="">
                 {/* <IoMdCart className="text-xl" /> */}Cart
-                <span className="text-red-500">(10)</span>
+                <span className="text-red-500">({cart.length})</span>
               </NavLink>
             </li>
           </ul>
