@@ -5,11 +5,14 @@ import { AppProvider } from "./context/ProductContext.jsx";
 import { useProductContext } from "./context/ProductContext.jsx";
 import { AppContext } from "./context/ProductContext.jsx";
 import { FilterContextProvider } from "./context/FilterContext.jsx";
+import { CartContextProvider } from "./context/CartContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <AppProvider value={{ useProductContext, AppContext }}>
     <FilterContextProvider>
-      <App />
+      <CartContextProvider>
+        <App />
+      </CartContextProvider>
     </FilterContextProvider>
   </AppProvider>
 );

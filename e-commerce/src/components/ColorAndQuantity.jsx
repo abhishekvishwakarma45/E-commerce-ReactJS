@@ -3,13 +3,15 @@ import { FaCheck } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
+import { useCartContext } from "../context/CartContext";
 
 export const ColorAndQuantity = ({ singleProduct }) => {
   const { colors = [] } = singleProduct;
-  const { stock } = singleProduct;
+  const { id, stock } = singleProduct;
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState(colors[0]);
 
+  const { AddToCart } = useCartContext();
   if (colors.length === 0) {
     return <p>No colors available</p>;
   }
@@ -47,7 +49,10 @@ export const ColorAndQuantity = ({ singleProduct }) => {
         </button>
       </div>
       <div>
-        <NavLink to="/cart">
+        <NavLink
+          to="/cart"
+          onClick={() => AddToCart(id, color, quantity, singleProduct)}
+        >
           <button className="add-to-cart-btn">Add To Cart</button>
         </NavLink>
       </div>

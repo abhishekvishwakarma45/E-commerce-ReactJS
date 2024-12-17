@@ -8,13 +8,10 @@ export default function SingleProductPage() {
   const { id } = useParams();
   const { getSingleProduct, isSingleLoading, singleProduct } =
     useProductContext();
-  const [count, setCount] = useState(0);
 
   useEffect(() => {
     getSingleProduct(`${API}?id=${id}`);
   }, []);
-
-  console.log(singleProduct);
 
   const {
     name,
