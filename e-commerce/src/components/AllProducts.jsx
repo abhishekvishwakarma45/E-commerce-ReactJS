@@ -77,6 +77,7 @@ export default function Products() {
           </div>
         </div>
       </div>
+      <hr />
 
       <div
         className="filter-section"
@@ -108,8 +109,7 @@ export default function Products() {
                   value={current}
                   onClick={updateFilterValue}
                 >
-                  <br />
-                  {current}
+                  <p> {current}</p>
                 </button>
               );
             })}
@@ -147,8 +147,10 @@ export default function Products() {
           })}
         </div>
 
-        <div>
+        <div className="range-section">
           <FormatPrice price={parseInt(price)} />
+          <br />
+
           <input
             type="range"
             min={minPrice}

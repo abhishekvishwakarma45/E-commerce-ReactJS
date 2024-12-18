@@ -85,9 +85,9 @@ export default function SingleProductPage() {
             {stock > 0 ? `In stock` : "Out of stock"}
           </p>
           <div className="product-reviews text-sm">
-            <p>
+            <div>
               <Star stars={stars} reviews={reviews} />
-            </p>
+            </div>
           </div>
           <div>
             <ColorAndQuantity singleProduct={singleProduct} />
