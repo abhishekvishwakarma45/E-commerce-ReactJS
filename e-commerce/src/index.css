@@ -1511,7 +1511,6 @@ a {
   transition: background-color 0.3s ease;
 }
 
-<<<<<<< HEAD
 .filter-category button svg {
   position: absolute;
   top: 5px;
@@ -1519,8 +1518,6 @@ a {
   color: white;
 }
 
-=======
->>>>>>> ebf77f9dd42a666dca9aab14532bfc3384e341e5
 .filter-category button:hover {
   background: #0056b3;
 }
