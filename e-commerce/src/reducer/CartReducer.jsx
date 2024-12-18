@@ -43,19 +43,18 @@ export const CartReducer = (state, action) => {
       };
     }
 
-    case "CART_TOTAL_PRICE": {
-      const totalAmount = state.cart.reduce(
-        (initialVal, current) => initialVal + current.price * current.quantity,
-        0
-      );
-
+    case "CART_TOTAL_PRICE":
+      let total_Price = state.cart.reduce((initailVal, current) => {
+        let { price, quantity } = current;
+        initailVal = initailVal + price * quantity;
+        return initailVal;
+      }, 0);
       return {
         ...state,
-        totalAmount,
+        totalPrice: totalPrice,
       };
-    }
 
-    case "REMOVE_PRODUCT": {
+    case "REMOVE_PRODUCT":
       updatedCart = state.cart.filter(
         (currentProduct) => currentProduct.id !== id
       );
@@ -64,7 +63,6 @@ export const CartReducer = (state, action) => {
         ...state,
         cart: updatedCart,
       };
-    }
 
     case "CLEAR_CART":
       return {
