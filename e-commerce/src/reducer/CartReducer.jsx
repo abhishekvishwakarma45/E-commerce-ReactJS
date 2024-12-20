@@ -8,6 +8,8 @@ export const CartReducer = (state, action) => {
     singleProduct = {},
   } = action.payload || {};
 
+  let newPrice;
+
   switch (action.type) {
     case "ADD_TO_CART": {
       const existingProductIndex = state.cart.findIndex(
@@ -17,58 +19,64 @@ export const CartReducer = (state, action) => {
       if (existingProductIndex >= 0) {
         updatedCart = state.cart.map((product, index) =>
           index === existingProductIndex
-            ? { ...product, quantity: product.quantity + quantity }
+            ? {
+                ...product,
+                quantity: product.quantity + quantity,
+                price:
+                  (product.price / product.quantity) *
+                  (product.quantity + quantity),
+              }
             : product
         );
-
-        return {
-          ...state,
-          cart: updatedCart,
+      } else {
+        cartProduct = {
+          id: id + color,
+          name: singleProduct.name,
+          color,
+          quantity,
+          image: singleProduct.image[0]?.url || "",
+          price: singleProduct.price * quantity,
+          max: singleProduct.stock,
         };
+
+        updatedCart = [...state.cart, cartProduct];
       }
 
-      cartProduct = {
-        id: id + color,
-        name: singleProduct.name,
-        color,
-        quantity,
-        image: singleProduct.image[0]?.url || "",
-        price: singleProduct.price,
-        max: singleProduct.stock,
-      };
+      newPrice = updatedCart.reduce(
+        (accumulator, current) => accumulator + current.price,
+        0
+      );
 
       return {
         ...state,
-        cart: [...state.cart, cartProduct],
+        cart: updatedCart,
+        totalAmount: newPrice,
       };
     }
-
-    case "CART_TOTAL_PRICE":
-      let total_Price = state.cart.reduce((initailVal, current) => {
-        let { price, quantity } = current;
-        initailVal = initailVal + price * quantity;
-        return initailVal;
-      }, 0);
-      return {
-        ...state,
-        totalPrice: totalPrice,
-      };
 
     case "REMOVE_PRODUCT":
       updatedCart = state.cart.filter(
         (currentProduct) => currentProduct.id !== id
       );
 
+      newPrice = updatedCart.reduce(
+        (accumulator, current) => accumulator + current.price,
+        0
+      );
+
       return {
         ...state,
         cart: updatedCart,
+        totalAmount: newPrice,
       };
 
     case "CLEAR_CART":
       return {
         ...state,
         cart: [],
+        totalAmount: 0,
       };
+
     default:
       return state;
   }

@@ -14,7 +14,7 @@ const getLocalStorageCart = () => {
 const initialState = {
   cart: getLocalStorageCart(),
   totalItem: "",
-  totalAmount: "",
+  totalAmount: 0,
   shippingFee: "0",
 };
 
@@ -26,6 +26,7 @@ export const CartContextProvider = ({ children }) => {
       type: "ADD_TO_CART",
       payload: { id, color, quantity, singleProduct },
     });
+    dispatch({ type: "TOTAL_PRICE" });
   };
   const removeProduct = (id) => {
     dispatch({ type: "REMOVE_PRODUCT", payload: { id } });

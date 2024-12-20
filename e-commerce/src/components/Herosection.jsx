@@ -26,7 +26,7 @@ export const HeroSection = () => {
           </NavLink>
         </div>
         <div className="hero-section-item">
-          <img src="https://img.freepik.com/free-photo/portrait-handsome-confident-model-sexy-stylish-man-dressed-checkered-shirt-jeans-fashion-hipster-male-posing-near-blue-wall-studio-isolated_158538-26328.jpg?t=st=1733734761~exp=1733738361~hmac=d753ea95d035ae596a408d1eaa5af3634e05a4c6f1e74375fa1551cf085463a1&w=1060" />
+          <img src="https://img.freepik.com/free-photo/dreamy-young-woman-sunglasses-looking-front_197531-16739.jpg?t=st=1734602088~exp=1734605688~hmac=84224e0e439163eaa5af404f67a7bc9bed337435d92eeb6a67bada6ce322f963&w=1060" />
         </div>
       </section>
     </Fragment>

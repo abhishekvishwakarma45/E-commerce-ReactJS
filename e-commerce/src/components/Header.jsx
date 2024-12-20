@@ -15,7 +15,7 @@ const HeaderNavbar = () => {
         <div className="logo-container">
           <NavLink to="/">
             <img
-              src="https://img.freepik.com/free-vector/comic-speech-bubble-with-oops-text_1308-53484.jpg?t=st=1733738747~exp=1733742347~hmac=f2ea18be40dcb34a974dc1681a0244d8944cd7ed4aa6be16f7409c6bb03dd3a5&w=1060"
+              src="https://img.freepik.com/premium-vector/av-logo-design_731343-2726.jpg?ga=GA1.1.1873205047.1726829489&semt=ais_hybrid"
               alt="Logo"
             />
           </NavLink>
