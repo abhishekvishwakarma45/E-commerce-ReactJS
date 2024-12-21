@@ -70,7 +70,7 @@ export const FilterReducer = (state, action) => {
           category: "",
           company: "",
           colors: "",
-          price: "",
+          price: 0,
         },
       };
 

@@ -42,7 +42,6 @@ export default function Products() {
   const setPrice = () => {
     const minimumPrice = Math.min(...priceData);
     setMinPrice(minimumPrice);
-
     const maximumPrice = Math.max(...priceData);
     setMaxPrice(maximumPrice);
   };
@@ -152,6 +151,7 @@ export default function Products() {
           <br />
 
           <input
+            defaultValue={0}
             type="range"
             min={minPrice}
             max={maxPrice}

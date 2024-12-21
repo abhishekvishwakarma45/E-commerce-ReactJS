@@ -26,7 +26,7 @@ export const HeroSection = () => {
           </NavLink>
         </div>
         <div className="hero-section-item">
-          <img src="https://img.freepik.com/free-photo/dreamy-young-woman-sunglasses-looking-front_197531-16739.jpg?t=st=1734602088~exp=1734605688~hmac=84224e0e439163eaa5af404f67a7bc9bed337435d92eeb6a67bada6ce322f963&w=1060" />
+          <img src="/hero-image.png" />
         </div>
       </section>
     </Fragment>
