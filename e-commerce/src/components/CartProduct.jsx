@@ -30,7 +30,9 @@ export default function CartProduct(current) {
           style={{ backgroundColor: ` ${color}` }}
         ></p>
         <div className="product-actions">
-          <p className="product-quantity">Quantiy:{quantity}</p>
+          <p className="product-quantity">
+            Quantiy: <b>{quantity}</b>
+          </p>
           <button
             type="button"
             className="remove-button"

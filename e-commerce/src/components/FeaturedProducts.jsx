@@ -6,7 +6,11 @@ const FeatureProducts = () => {
   const { isLoading, featureProducts } = useProductContext();
 
   if (isLoading) {
-    return <h1>loading....</h1>;
+    return (
+      <div className="spin-loader">
+        <span className="loader"></span>
+      </div>
+    );
   }
 
   return (

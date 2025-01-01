@@ -57,15 +57,12 @@ export default function Cart() {
               Shipping and taxes calculated at checkout.
             </p>
             <div className="checkout">
-              <button href="#" className="checkout-button" onClick={clearCart}>
+              <button className="checkout-btn"> Checkout</button>
+              <button href="#" className="clear-button" onClick={clearCart}>
                 Clear
               </button>
             </div>
-            <div className="checkout">
-              <a href="#" className="checkout-button">
-                Checkout
-              </a>
-            </div>
+
             <div className="continue-shopping">
               <p>
                 or <br />

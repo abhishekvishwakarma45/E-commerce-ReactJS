@@ -2,22 +2,26 @@ import { Fragment, useState } from "react";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { NavLink } from "react-router-dom";
 import { RxCross1 } from "react-icons/rx";
-import { IoMdCart } from "react-icons/io";
+
 import { useCartContext } from "../context/CartContext";
+import { HiOutlineShoppingBag } from "react-icons/hi2";
 
 const HeaderNavbar = () => {
   const [transform, setTransform] = useState("-100%");
   let { cart } = useCartContext();
+
+  const closeSlider = () => {
+    setTransform("-100%");
+  };
 
   return (
     <Fragment>
       <div className="navbar-container">
         <div className="logo-container">
           <NavLink to="/">
-            <img
-              src="https://img.freepik.com/premium-vector/av-logo-design_731343-2726.jpg?ga=GA1.1.1873205047.1726829489&semt=ais_hybrid"
-              alt="Logo"
-            />
+            <figure>
+              <img src="/logo.png" alt="Logo" />
+            </figure>
           </NavLink>
         </div>
         <div className="navbar-right-items">
@@ -31,11 +35,11 @@ const HeaderNavbar = () => {
             <li className="m-4">
               <NavLink to="/about">About Us</NavLink>
             </li>
-            <li className="m-4">
-              <NavLink to="/cart" className="">
-                {/* <IoMdCart className="text-xl" /> */}Cart
-                <span className="text-red-500">({cart.length})</span>
+            <li className="m-4 cart-item">
+              <NavLink to="/cart">
+                <HiOutlineShoppingBag />
               </NavLink>
+              <span className="text-red-500">({cart.length})</span>
             </li>
           </ul>
           <button
@@ -51,24 +55,49 @@ const HeaderNavbar = () => {
         className="navbar-slider"
         style={{ transform: `translateX(${transform})` }}
       >
-        <button className="text-2xl" onClick={() => setTransform("-100%")}>
-          <RxCross1 />
-        </button>
-        <ul className="capitalize bold text-black">
-          <li className="m-4">
-            <NavLink to="/products">Products</NavLink>
-          </li>
-          <li className="m-4">
-            <NavLink to="/contact">Contact</NavLink>
-          </li>
-          <li className="m-4">
-            <NavLink to="/about">About Us</NavLink>
-          </li>
-          <li className="m-4">
-            <span className="text-red-500">(10)</span>
-            <NavLink to="/cart">Cart</NavLink>
-          </li>
-        </ul>
+        {/* Logo and Close Button */}
+        <div className="slider-header">
+          <NavLink to="/" onClick={closeSlider}>
+            <img src="/logo.png" alt="Logo" className="slider-logo" />
+          </NavLink>
+          <button className="text-2xl slider-close-btn" onClick={closeSlider}>
+            <RxCross1 />
+          </button>
+        </div>
+
+        <div className="ul-links">
+          <ul className="capitalize bold text-black">
+            <li className="m-4">
+              <NavLink to="/products" onClick={closeSlider}>
+                Products
+              </NavLink>
+            </li>
+            <li className="m-4">
+              <NavLink to="/contact" onClick={closeSlider}>
+                Contact
+              </NavLink>
+            </li>
+            <li className="m-4">
+              <NavLink to="/about" onClick={closeSlider}>
+                About Us
+              </NavLink>
+            </li>
+            <li className="m-4">
+              <NavLink to="/cart" onClick={closeSlider}>
+                <h1>
+                  cart <span className="text-red-500">({cart.length})</span>
+                </h1>
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+
+        {/* Privacy Policy */}
+        <div className="slider-footer">
+          <NavLink to="/privacy-policy" onClick={closeSlider}>
+            Privacy Policy
+          </NavLink>
+        </div>
       </div>
     </Fragment>
   );

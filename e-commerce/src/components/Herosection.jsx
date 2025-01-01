@@ -10,16 +10,24 @@ export const HeroSection = () => {
       >
         <div className="hero-section-item  ">
           <p className="content-heading">
-            Welcome to <span className="uppercase">OOPS</span>
+            Welcome to <span className="">E-commerce Store</span>
           </p>
           <p className="content-paragraph">
-            Discover your new favorite t-shirts designed for comfort, style, and
-            self-expression. Whether you’re into bold graphics, minimalist
-            vibes, or timeless classics, we’ve got something to match your
-            personality. <br />
-            we believe a t-shirt is more than just clothing—it’s your canvas.
-            That’s why we’re passionate about offering high-quality fabrics,
-            unique designs, and fits that feel like they were made just for you.
+            Your ultimate shopping destination! From the latest tech gadgets to
+            fashion, home goods, and everything in between, we’ve got it all.
+            Shop millions of products from trusted brands, all at unbeatable
+            prices. <br />
+            Endless Selection, One Place Whether you're upgrading your home,
+            refreshing your wardrobe, or finding the perfect gift, we offer a
+            vast range of categories to suit every need and style. Browse, shop,
+            and discover products that make life easier, better, and more
+            exciting.
+            <br />
+            Fast, Convenient, Reliable Enjoy fast shipping easy returns, and
+            top-notch customer service. Shop with confidence knowing that we’re
+            here to make your shopping experience simple and enjoyable. Start
+            Shopping Now Browse our top categories and find exactly what you
+            need. From electronics to fashion, we’ve got something for everyone!
           </p>
           <NavLink to="/products">
             <button>Shop Now</button>

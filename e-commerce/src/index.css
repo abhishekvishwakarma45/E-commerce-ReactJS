@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@100..400&display=swap");
+
 *,
 ::before,
 ::after {
@@ -804,10 +806,25 @@ video {
   width: 20%;
 }
 
-.logo-container img {
+.logo-container figure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  padding: 10px;
+  height: 10vh;
+}
+.logo-container figure > img {
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
+}
+
+.cart-item {
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .navbar-right-items {
@@ -816,39 +833,77 @@ video {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  font-weight: 600;
 }
 
 .navbar-right-items button {
   font-size: 2rem;
 }
+
 .navbar-slider {
   height: 100vh;
-  width: 100vw;
-  background-color: white;
+  width: 70%;
+  background-color: #f4f4f4;
   position: fixed;
   top: 0;
   z-index: 999;
-  padding: 10px;
   text-align: center;
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .navbar-slider li {
   height: auto;
-  width: 100vw;
+  width: 100%;
   font-size: 1.2rem;
+  font-weight: bold;
 }
 
-.navbar-slider button {
+.navbar-slider li:hover {
+  color: rgb(234, 228, 228);
+}
+
+.slider-header {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  height: 10vh;
-  width: 100%;
+  height: 10%;
   padding: 20px;
-  font-weight: bold;
+  border-bottom: 1px solid grey;
+}
+
+.slider-logo {
+  height: 40px;
+  width: auto;
+  mix-blend-mode: multiply;
+}
+
+.slider-close-btn {
   font-size: 2rem;
+  color: black;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.slider-footer {
+  margin: 20px 0;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.ul-links {
+  height: 80%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.ul-links ul {
+  width: 100%;
 }
 
 /* ----------------------hero section---------------------------- */
@@ -871,8 +926,11 @@ video {
 }
 
 .content-heading {
+  font-family: "Playwrite AU SA", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 5px 0px;
 }
 .content-paragraph {
@@ -936,19 +994,26 @@ video {
   text-align: center;
   font-size: 1rem;
 }
+.subscribe-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
 
 .footer-item-2 input {
   margin: 20px 0px;
   border: 1px solid grey;
   padding: 15px;
-  width: 100%;
+  width: 70%;
+  color: black;
 }
 
 .footer-item-2 button {
-  background-color: black;
   color: white;
-  padding: 10px 30px;
-  border-radius: 25px;
+  padding: 15px;
+  background-color: black;
+ border: 1.5px solid black;
   font-size: 1rem;
 }
 
@@ -1013,11 +1078,11 @@ video {
 
 .contact-form-container button {
   margin-top: 10px;
-  width: 70%;
+  width: 100%;
   background-color: black;
   color: white;
   padding: 10px 30px;
-  border-radius: 25px;
+  border-radius: 5px;
   font-size: 1rem;
 }
 
@@ -1196,7 +1261,6 @@ a {
   height: auto;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr;
   gap: 2rem;
 }
 
@@ -1479,8 +1543,9 @@ a {
   background-color: #f4f4f4;
   border-radius: 8px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-  width: 300px;
+  width: 30%;
   transition: transform 0.3s ease-in-out;
+  overflow: hidden;
 }
 
 .cross-btn {
@@ -1685,7 +1750,7 @@ a {
 }
 
 .panel-container {
-  padding: 5% 10%;
+  padding: 2% 10%;
   width: 100%;
 }
 
@@ -1695,7 +1760,6 @@ a {
   flex-direction: column;
   height: 100%;
   background-color: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .header {
@@ -1731,7 +1795,7 @@ a {
 
 /* Cart Items */
 .cart-items {
-  margin-top: 2rem;
+  margin: 2rem 0rem;
 }
 
 .product-list {
@@ -1742,11 +1806,13 @@ a {
 }
 
 .product-item {
+  border-top: 1px solid grey;
   display: flex;
   padding: 1rem 1.5rem;
 }
 
 .product-image {
+  border-radius: 5px;
   width: 6rem;
   height: 6rem;
   overflow: hidden;
@@ -1767,11 +1833,11 @@ a {
 }
 
 .product-info {
+  text-transform: capitalize;
   display: flex;
   justify-content: space-between;
   font-size: 1rem;
   font-weight: 500;
-  color: #1f2937; /* text-gray-900 */
 }
 
 .product-price {
@@ -1793,12 +1859,12 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  font-size: 0.875rem; /* text-sm */
+  font-size: 0.875rem;
 }
 
 .remove-button {
   font-weight: 500;
-  color: #6366f1; /* text-indigo-600 */
+  color: #6366f1;
   cursor: pointer;
   transition: color 0.2s ease;
 }
@@ -1809,7 +1875,7 @@ a {
 
 /* Footer */
 .footer {
-  border-top: 1px solid #e5e7eb; /* border-gray-200 */
+  border-top: 1px solid grey; /* border-gray-200 */
   padding: 1.5rem 1rem;
 }
 
@@ -1828,10 +1894,14 @@ a {
 }
 
 .checkout {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10px;
   margin-top: 1.5rem;
 }
 
-.checkout-button {
+.clear-btn,
+.checkout-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1845,12 +1915,31 @@ a {
   transition: background-color 0.2s ease;
 }
 
-.checkout-button:hover {
+.clear-button {
+  background-color: rgb(194, 66, 66);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.checkout-btn:hover {
   background-color: transparent;
   border: 1px solid black;
   color: black;
 }
-
+.clear-button:hover {
+  background-color: transparent;
+  border: 1px solid black;
+  color: black;
+}
 .continue-shopping {
   margin-top: 1.5rem;
   text-align: center;
@@ -1903,3 +1992,10 @@ a {
   border: 1px solid black;
   color: black;
 }
+
+.cart {
+  display: flex;
+  justify-content: center;
+}
+
+/* ---------------------------- login page*/
