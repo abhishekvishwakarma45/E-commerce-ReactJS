@@ -52,7 +52,7 @@ const HeaderNavbar = () => {
             </li>
           </ul>
           <button
-            className="h-auto w-auto text-black block md:block lg:hidden xl:hidden"
+            className="menu-btn h-auto w-auto text-black block md:block lg:hidden xl:hidden "
             onClick={() => setTransform("0")}
           >
             <HiOutlineMenuAlt3 />
