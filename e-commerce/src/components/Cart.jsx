@@ -2,10 +2,54 @@ import { useCartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 import CartProduct from "./CartProduct";
 import { NavLink } from "react-router-dom";
-
+import { useCallback } from "react";
 import { FormatPrice } from "../Helpers/FormatPrice";
+import useLoginContext from "../context/LoginContext";
+
 export default function Cart() {
   const { cart, clearCart, totalAmount } = useCartContext();
+
+  const { token } = useLoginContext();
+
+  console.log("context Token: " + "\n" + token);
+  const PlaceOrder = useCallback(async () => {
+    const localStorageProduct = localStorage.getItem("cartProducts");
+    if (!localStorageProduct) {
+      alert("Cart is empty!");
+      return;
+    }
+
+    let cartProducts = JSON.parse(localStorageProduct);
+    cartProducts.map((current, index) => {
+      return console.log(`at index ${index}` + current);
+    });
+
+    // let dummyData = {
+    //   id: 2,
+    //   name: "mobile",
+    //   color: "#000",
+    //   quantity: 5,
+    //   image: "a.png",
+    //   price: 5600,
+    //   max: 5,
+    // };
+
+    const response = await fetch("/cart/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(cartProducts),
+    });
+
+    if (response.ok) {
+      alert("Order placed successfully...");
+    } else {
+      alert("Failed to place order. Unauthorized.");
+    }
+  }, [token]);
+
   if (cart.length <= 0) {
     return (
       <div className="cart-empty-container">
@@ -14,7 +58,7 @@ export default function Cart() {
           <p>
             Before proceeding to checkout, you must add some products to your
             shopping cart. You will find a lot of interesting products on our
-            "Shop" page.
+            Shop page.
           </p>
         </div>
 
@@ -57,7 +101,9 @@ export default function Cart() {
               Shipping and taxes calculated at checkout.
             </p>
             <div className="checkout">
-              <button className="checkout-btn"> Checkout</button>
+              <button className="checkout-btn" onClick={PlaceOrder}>
+                Order
+              </button>
               <button href="#" className="clear-button" onClick={clearCart}>
                 Clear
               </button>

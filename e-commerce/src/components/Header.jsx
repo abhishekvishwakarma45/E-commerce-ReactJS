@@ -2,6 +2,7 @@ import { Fragment, useState } from "react";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { NavLink } from "react-router-dom";
 import { RxCross1 } from "react-icons/rx";
+import { FiLogIn } from "react-icons/fi";
 
 import { useCartContext } from "../context/CartContext";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
@@ -41,6 +42,14 @@ const HeaderNavbar = () => {
               </NavLink>
               <span className="text-red-500">({cart.length})</span>
             </li>
+
+            <li>
+              <NavLink to="/login">
+                <button className="login-btn">
+                  <FiLogIn />
+                </button>
+              </NavLink>
+            </li>
           </ul>
           <button
             className="h-auto w-auto text-black block md:block lg:hidden xl:hidden"
@@ -55,7 +64,6 @@ const HeaderNavbar = () => {
         className="navbar-slider"
         style={{ transform: `translateX(${transform})` }}
       >
-        {/* Logo and Close Button */}
         <div className="slider-header">
           <NavLink to="/" onClick={closeSlider}>
             <img src="/logo.png" alt="Logo" className="slider-logo" />
@@ -64,7 +72,6 @@ const HeaderNavbar = () => {
             <RxCross1 />
           </button>
         </div>
-
         <div className="ul-links">
           <ul className="capitalize bold text-black">
             <li className="m-4">
@@ -91,8 +98,6 @@ const HeaderNavbar = () => {
             </li>
           </ul>
         </div>
-
-        {/* Privacy Policy */}
         <div className="slider-footer">
           <NavLink to="/privacy-policy" onClick={closeSlider}>
             Privacy Policy
