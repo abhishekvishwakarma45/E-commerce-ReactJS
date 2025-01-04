@@ -24,16 +24,6 @@ export default function Cart() {
       return console.log(`at index ${index}` + current);
     });
 
-    // let dummyData = {
-    //   id: 2,
-    //   name: "mobile",
-    //   color: "#000",
-    //   quantity: 5,
-    //   image: "a.png",
-    //   price: 5600,
-    //   max: 5,
-    // };
-
     const response = await fetch("/cart/add", {
       method: "POST",
       headers: {

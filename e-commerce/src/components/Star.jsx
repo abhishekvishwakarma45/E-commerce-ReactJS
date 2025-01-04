@@ -20,7 +20,6 @@ export const Star = ({ stars, reviews }) => {
   return (
     <Fragment>
       <div className="star-rating">
-        {/* Replace <p> with <div> or <span> for stars */}
         <div className="stars">{ratingStar}</div>
         <p className="reviews">{reviews} reviews</p>
       </div>

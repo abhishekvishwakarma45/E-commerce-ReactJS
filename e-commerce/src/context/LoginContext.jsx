@@ -30,7 +30,7 @@ export const LoginContextProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    getToken(); // Call on mount to ensure the token is loaded
+    getToken();
   }, [getToken]);
 
   return (
