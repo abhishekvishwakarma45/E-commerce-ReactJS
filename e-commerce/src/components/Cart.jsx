@@ -2,11 +2,22 @@ import { useCartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 import CartProduct from "./CartProduct";
 import { NavLink } from "react-router-dom";
-import { useCallback } from "react";
+import { Fragment, useCallback, useState } from "react";
 import { FormatPrice } from "../Helpers/FormatPrice";
 import useLoginContext from "../context/LoginContext";
 
+import OrderPlacedToast from "./OrderPlacedToast";
+
 export default function Cart() {
+  const [orderPlaced, setOrderPlaced] = useState(false);
+
+  const toastHandling = useCallback(() => {
+    setOrderPlaced(true);
+    setTimeout(() => {
+      setOrderPlaced(false);
+    }, 3000);
+  }, []);
+
   const { cart, clearCart, totalAmount } = useCartContext();
 
   const { token } = useLoginContext();
@@ -34,11 +45,11 @@ export default function Cart() {
     });
 
     if (response.ok) {
-      alert("Order placed successfully...");
+      toastHandling();
     } else {
       alert("Failed to place order. Unauthorized.");
     }
-  }, [token]);
+  }, [token, toastHandling]);
 
   if (cart.length <= 0) {
     return (
@@ -60,59 +71,62 @@ export default function Cart() {
   }
 
   return (
-    <div
-      className="relative z-10"
-      aria-labelledby="slide-over-title"
-      role="dialog"
-      aria-modal="true"
-    >
-      <div className="backdrop" aria-hidden="true"></div>
+    <Fragment>
+      {orderPlaced && <OrderPlacedToast />}
+      <div
+        className="relative z-10"
+        aria-labelledby="slide-over-title"
+        role="dialog"
+        aria-modal="true"
+      >
+        <div className="backdrop" aria-hidden="true"></div>
 
-      <div className="overlay">
-        <div className="panel-container">
-          <div className="panel">
-            <div className="cart-items">
-              <ul className="product-list">
-                {cart.map((current) => {
-                  return <CartProduct key={current.id} {...current} />;
-                })}
-              </ul>
+        <div className="overlay">
+          <div className="panel-container">
+            <div className="panel">
+              <div className="cart-items">
+                <ul className="product-list">
+                  {cart.map((current) => {
+                    return <CartProduct key={current.id} {...current} />;
+                  })}
+                </ul>
+              </div>
             </div>
-          </div>
 
-          <div className="footer">
-            <div className="subtotal">
-              <p>Subtotal</p>
-              <p>
-                <FormatPrice price={totalAmount} />
+            <div className="footer">
+              <div className="subtotal">
+                <p>Subtotal</p>
+                <p>
+                  <FormatPrice price={totalAmount} />
+                </p>
+              </div>
+              <p className="tax-info">
+                Shipping and taxes calculated at checkout.
               </p>
-            </div>
-            <p className="tax-info">
-              Shipping and taxes calculated at checkout.
-            </p>
-            <div className="checkout">
-              <button className="checkout-btn" onClick={PlaceOrder}>
-                Order
-              </button>
-              <button href="#" className="clear-button" onClick={clearCart}>
-                Clear
-              </button>
-            </div>
+              <div className="checkout">
+                <button className="checkout-btn" onClick={PlaceOrder}>
+                  Order
+                </button>
+                <button href="#" className="clear-button" onClick={clearCart}>
+                  Clear
+                </button>
+              </div>
 
-            <div className="continue-shopping">
-              <p>
-                or <br />
-                <NavLink to="/products">
-                  <button type="button" className="continue-button">
-                    Continue Shopping
-                    <span aria-hidden="true"> &rarr;</span>
-                  </button>
-                </NavLink>
-              </p>
+              <div className="continue-shopping">
+                <p>
+                  or <br />
+                  <NavLink to="/products">
+                    <button type="button" className="continue-button">
+                      Continue Shopping
+                      <span aria-hidden="true"> &rarr;</span>
+                    </button>
+                  </NavLink>
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </Fragment>
   );
 }

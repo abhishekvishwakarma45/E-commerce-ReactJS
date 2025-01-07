@@ -2,8 +2,8 @@ import { Fragment, useState } from "react";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { NavLink } from "react-router-dom";
 import { RxCross1 } from "react-icons/rx";
-import { FiLogIn } from "react-icons/fi";
 
+import { FaUser } from "react-icons/fa6";
 import { useCartContext } from "../context/CartContext";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 
@@ -26,7 +26,7 @@ const HeaderNavbar = () => {
           </NavLink>
         </div>
         <div className="navbar-right-items">
-          <ul className="hidden capitalize bold text-black md:hidden lg:flex items-center">
+          <ul className="items-center hidden text-black capitalize bold md:hidden lg:flex">
             <li className="m-4">
               <NavLink to="/products">Products</NavLink>
             </li>
@@ -46,13 +46,13 @@ const HeaderNavbar = () => {
             <li>
               <NavLink to="/login">
                 <button className="login-btn">
-                  <FiLogIn />
+                  <FaUser />
                 </button>
               </NavLink>
             </li>
           </ul>
           <button
-            className="menu-btn h-auto w-auto text-black block md:block lg:hidden xl:hidden "
+            className="block w-auto h-auto text-black menu-btn md:block lg:hidden xl:hidden "
             onClick={() => setTransform("0")}
           >
             <HiOutlineMenuAlt3 />
@@ -73,7 +73,7 @@ const HeaderNavbar = () => {
           </button>
         </div>
         <div className="ul-links">
-          <ul className="capitalize bold text-black">
+          <ul className="text-black capitalize bold">
             <li className="m-4">
               <NavLink to="/products" onClick={closeSlider}>
                 Products

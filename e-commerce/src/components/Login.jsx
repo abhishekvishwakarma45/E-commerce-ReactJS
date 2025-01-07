@@ -1,5 +1,7 @@
 import { Fragment, useCallback, useEffect, useState } from "react";
 import useLoginContext from "../context/LoginContext";
+import LoginToastNotification from "./LoginToastNotification";
+import UnauthenticateUserToast from "./UnauthenticateUserToast";
 
 export const Login = () => {
   const { getToken } = useLoginContext();
@@ -8,6 +10,8 @@ export const Login = () => {
     password: "",
   });
 
+  const [toast, setToast] = useState(false);
+  const [Unauthenticated, setUnauthenticated] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCredentials((prev) => ({
@@ -16,6 +20,19 @@ export const Login = () => {
     }));
   };
 
+  const handleToast = () => {
+    setToast(true);
+    setTimeout(() => {
+      setToast(false);
+    }, 3000);
+  };
+
+  const validateUser = () => {
+    setUnauthenticated(true);
+    setTimeout(() => {
+      setUnauthenticated(false);
+    }, 3000);
+  };
   const handleLogin = useCallback(
     async (e) => {
       e.preventDefault();
@@ -34,11 +51,13 @@ export const Login = () => {
 
         const token = await response.text();
         localStorage.setItem("token", token);
-        alert("You logged in successfully...");
+
         getToken();
+        handleToast();
       } catch (error) {
         console.error("Login error:", error);
-        alert(error.message);
+        validateUser();
+        // alert(error.message);
       }
     },
     [credentials, getToken]
@@ -50,6 +69,8 @@ export const Login = () => {
 
   return (
     <Fragment>
+      {toast && <LoginToastNotification />}
+      {Unauthenticated && <UnauthenticateUserToast />}
       <section className="full-height">
         <div className="container">
           <div className="content-wrapper">

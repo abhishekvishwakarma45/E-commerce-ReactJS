@@ -4,11 +4,8 @@ import { NavLink } from "react-router-dom";
 export const HeroSection = () => {
   return (
     <Fragment>
-      <section
-        className="hero-section grid grid-cols-2 
-      items-center lg:flex"
-      >
-        <div className="hero-section-item  ">
+      <section className="grid items-center grid-cols-2 hero-section lg:flex">
+        <div className="hero-section-item ">
           <p className="content-heading">
             Welcome to <span className="">E-commerce Store</span>
           </p>
@@ -17,7 +14,7 @@ export const HeroSection = () => {
             fashion, home goods, and everything in between, we’ve got it all.
             Shop millions of products from trusted brands, all at unbeatable
             prices. <br />
-            Endless Selection, One Place Whether you're upgrading your home,
+            Endless Selection, One Place Whether youre upgrading your home,
             refreshing your wardrobe, or finding the perfect gift, we offer a
             vast range of categories to suit every need and style. Browse, shop,
             and discover products that make life easier, better, and more
@@ -34,7 +31,7 @@ export const HeroSection = () => {
           </NavLink>
         </div>
         <div className="hero-section-item">
-          <img src="/hero-image.png" />
+          <img src="https://wallpaperaccess.com/full/6424687.jpg" />
         </div>
       </section>
     </Fragment>
