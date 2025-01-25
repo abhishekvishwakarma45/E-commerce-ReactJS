@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@100..400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 *,
 ::before,
@@ -913,6 +914,7 @@ video {
   height: auto;
   width: 100vw;
   padding: 5% 10%;
+
 }
 
 .hero-section-item {
@@ -2027,7 +2029,7 @@ html {
 }
 
 .full-height {
-  padding: 5% 10%;
+  padding: 0% 10%;
 }
 
 .container {
@@ -2143,9 +2145,8 @@ html {
 
 /* Divider */
 .divider {
-  display: flex;
-  align-items: center;
-  text-align: center;
+display: grid;
+place-items: center;
   margin: 16px 0;
 }
 
@@ -2320,4 +2321,34 @@ form {
   text-align: center;
   color: rgb(87, 82, 82);
   margin-bottom: 10px;
+}
+
+.redirect{
+  display: grid;
+  place-items: center;
+  margin: 10px 5px;
+  height: 5vh;
+  width: 100%;
+}
+
+.redirect span
+{
+color: #0056b3;
+text-align: center;
+
+
+}
+
+.formHeading{
+  margin: 20px 0px;
+height: auto;
+width: 100vw;
+display: grid;
+place-items: center;
+}
+
+.formHeading h1{
+  font-weight: 900;
+  text-transform: capitalize;
+  font-size: 2rem;
 }

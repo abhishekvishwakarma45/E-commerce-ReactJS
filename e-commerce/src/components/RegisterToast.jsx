@@ -1,6 +1,6 @@
 import { FaCheck } from "react-icons/fa6";
 import "animate.css";
-const OrderPlacedToast = () => {
+const RegisterToast = () => {
   return (
     <div className="ease-in toast-container animate__animated animate__fadeIn animate__fast ">
       <div id="toast-simple" className="toast" role="alert">
@@ -8,11 +8,11 @@ const OrderPlacedToast = () => {
           <FaCheck />
         </div>
         <div className="message-wrapper">
-          <p className="message">Order Placed Successfully</p>
+          <p className="message">Registered successfully</p>
         </div>
       </div>
     </div>
   );
 };
 
-export default OrderPlacedToast;
+export default RegisterToast;

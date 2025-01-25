@@ -8,6 +8,7 @@ import HeaderNavbar from "./components/Header";
 import Cart from "./components/Cart";
 import ErrorPage from "./components/ErrorPage";
 import { Login } from "./components/Login";
+import { RegisterNewUser } from "./components/RegisterNewUser";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/singleproduct/:id" element={<SingleProductPage />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/register" element={<RegisterNewUser />} />
         <Route path="/login" element={<Login />} />
         <Route path="/error" element={<ErrorPage />} />
       </Routes>

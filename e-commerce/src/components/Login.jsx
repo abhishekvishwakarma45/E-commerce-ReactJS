@@ -2,7 +2,7 @@ import { Fragment, useCallback, useEffect, useState } from "react";
 import useLoginContext from "../context/LoginContext";
 import LoginToastNotification from "./LoginToastNotification";
 import UnauthenticateUserToast from "./UnauthenticateUserToast";
-
+import { NavLink } from "react-router-dom";
 export const Login = () => {
   const { getToken } = useLoginContext();
   const [credentials, setCredentials] = useState({
@@ -71,6 +71,9 @@ export const Login = () => {
     <Fragment>
       {toast && <LoginToastNotification />}
       {Unauthenticated && <UnauthenticateUserToast />}
+      <div className="formHeading">
+        <h1>Login </h1>
+      </div>
       <section className="full-height">
         <div className="container">
           <div className="content-wrapper">
@@ -133,6 +136,14 @@ export const Login = () => {
                 <a href="#!" className="social-button twitter">
                   Continue with X
                 </a>
+                <div className="redirect">
+                  <p>
+                    Not a Member?
+                    <NavLink to="/register">
+                      <span> Sign Up</span>
+                    </NavLink>
+                  </p>
+                </div>
               </form>
             </div>
           </div>

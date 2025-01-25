@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 export const HeroSection = () => {
   return (
     <Fragment>
-      <section className="grid items-center grid-cols-2 hero-section lg:flex">
+      <section className="grid items-center grid-cols-2  herosection hero-section lg:flex">
         <div className="hero-section-item ">
           <p className="content-heading">
             Welcome to <span className="">E-commerce Store</span>
