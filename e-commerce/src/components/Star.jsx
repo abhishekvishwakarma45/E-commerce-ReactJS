@@ -1,14 +1,14 @@
 import { Fragment } from "react";
 import { FaStarHalfAlt, FaStar, FaRegStar } from "react-icons/fa"; // Importing all icons from the same source
 
-export const Star = ({ stars, reviews }) => {
+export const Star = ({ rating, reviews }) => {
   const ratingStar = Array.from({ length: 5 }, (current, index) => {
     let number = index + 0.5;
     return (
       <span key={index} className="star">
-        {stars >= index + 1 ? (
+        {rating >= index + 1 ? (
           <FaStar />
-        ) : stars >= number ? (
+        ) : rating >= number ? (
           <FaStarHalfAlt />
         ) : (
           <FaRegStar />

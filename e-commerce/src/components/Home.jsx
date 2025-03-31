@@ -4,7 +4,7 @@ import FeatureProducts from "./FeaturedProducts";
 import { Services } from "./Services";
 
 import Brands from "./Brands";
-
+import AdminPanel from "./AdminPanel";
 export default function Home() {
   return (
     <>
@@ -13,6 +13,7 @@ export default function Home() {
       <Services />
       <Brands />
       <Footer />
+      {/* <AdminPanel /> */}
     </>
   );
 }

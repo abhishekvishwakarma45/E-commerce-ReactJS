@@ -57,7 +57,6 @@ export const Login = () => {
       } catch (error) {
         console.error("Login error:", error);
         validateUser();
-        // alert(error.message);
       }
     },
     [credentials, getToken]

@@ -22,7 +22,7 @@ const AppProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const API = "https://api.pujakaitem.com/api/products";
+  const API = "http://localhost:8081/product/get";
 
   const GetFeaturedProducts = useCallback(async (url) => {
     dispatch({ type: "SET_LOADING" });

@@ -3,5 +3,5 @@ export const FormatPrice = ({ price }) => {
     style: "currency",
     currency: "INR",
     minimumFractionDigits: 2,
-  }).format(price / 100);
+  }).format(price + 0);
 };
