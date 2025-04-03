@@ -9,7 +9,7 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/cart': {
+      '/ecommerce': {
         target: 'http://localhost:8999',  
         changeOrigin: true,
         secure: false,

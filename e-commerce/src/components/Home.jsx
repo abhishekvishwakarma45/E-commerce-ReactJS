@@ -13,7 +13,7 @@ export default function Home() {
       <Services />
       <Brands />
       <Footer />
-      {/* <AdminPanel /> */}
+      <AdminPanel />
     </>
   );
 }

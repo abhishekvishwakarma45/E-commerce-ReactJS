@@ -22,7 +22,7 @@ const AppProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const API = "http://localhost:8081/product/get";
+  const API = "ecommerce/product/get";
 
   const GetFeaturedProducts = useCallback(async (url) => {
     dispatch({ type: "SET_LOADING" });

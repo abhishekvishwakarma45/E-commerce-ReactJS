@@ -26,8 +26,6 @@ export default function Brands() {
             delay: 2500,
             disableOnInteraction: false,
           }}
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log("slide change")}
         >
           <SwiperSlide>
             <div className="brand-items">
