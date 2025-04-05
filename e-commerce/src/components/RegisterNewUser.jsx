@@ -28,7 +28,7 @@ export const RegisterNewUser = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    let response = await fetch("http://localhost:8999/register", {
+    let response = await fetch("ecommerce/register", {
       headers: {
         "Content-Type": "application/json",
       },

@@ -23,6 +23,36 @@ export default function Cart() {
   const { token } = useLoginContext();
 
   console.log("context Token: " + "\n" + token);
+  // const PlaceOrder = useCallback(async () => {
+  //   const localStorageProduct = localStorage.getItem("cartProducts");
+  //   if (!localStorageProduct) {
+  //     alert("Cart is empty!");
+  //     return;
+  //   }
+
+  //   let cartProducts = JSON.parse(localStorageProduct);
+  //   let x = Array.isArray(cartProducts);
+  //   console.log(x);
+  //   cartProducts.map((current, index) => {
+  //     return console.log(`at index ${index}` + current);
+  //   });
+
+  //   const response = await fetch("ecommerce/cart/add", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //     body: JSON.stringify(cartProducts),
+  //   });
+
+  //   if (response.ok) {
+  //     toastHandling();
+  //   } else {
+  //     alert("Failed to place order. Unauthorized.");
+  //   }
+  // }, [token, toastHandling]);
+
   const PlaceOrder = useCallback(async () => {
     const localStorageProduct = localStorage.getItem("cartProducts");
     if (!localStorageProduct) {
@@ -31,23 +61,30 @@ export default function Cart() {
     }
 
     let cartProducts = JSON.parse(localStorageProduct);
-    cartProducts.map((current, index) => {
-      return console.log(`at index ${index}` + current);
-    });
+    if (!Array.isArray(cartProducts)) {
+      alert("Invalid cart data!");
+      return;
+    }
 
-    const response = await fetch("/cart/add", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(cartProducts),
-    });
+    try {
+      const response = await fetch("ecommerce/cart/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(cartProducts), // ✅ Sending the full array
+      });
 
-    if (response.ok) {
-      toastHandling();
-    } else {
-      alert("Failed to place order. Unauthorized.");
+      if (response.ok) {
+        toastHandling();
+      } else {
+        const text = await response.text();
+        throw new Error(text);
+      }
+    } catch (error) {
+      console.error("Error placing order:", error);
+      alert("Something went wrong: " + error.message);
     }
   }, [token, toastHandling]);
 

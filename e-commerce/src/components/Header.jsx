@@ -34,7 +34,7 @@ const HeaderNavbar = () => {
               <NavLink to="/contact">Contact</NavLink>
             </li>
             <li className="m-4">
-              <NavLink to="/about">About Us</NavLink>
+              <NavLink to="/about">About us</NavLink>
             </li>
             <li className="m-4 cart-item">
               <NavLink to="/cart">
@@ -86,7 +86,7 @@ const HeaderNavbar = () => {
             </li>
             <li className="m-4">
               <NavLink to="/about" onClick={closeSlider}>
-                About Us
+                About us
               </NavLink>
             </li>
             <li className="m-4">

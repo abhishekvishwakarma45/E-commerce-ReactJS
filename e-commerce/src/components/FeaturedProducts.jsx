@@ -20,9 +20,11 @@ const FeatureProducts = () => {
         <h1>Featured Products</h1>
       </div>
       <div className="feature-Product-container">
-        {featureProducts.map((current) => {
-          return <Product key={current.id} {...current} />;
-        })}
+        {Array.isArray(featureProducts)
+          ? featureProducts.map((current) => {
+              return <Product key={current.id} {...current} />;
+            })
+          : []}
       </div>
     </Fragment>
   );

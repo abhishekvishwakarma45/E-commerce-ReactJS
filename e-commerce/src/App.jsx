@@ -9,7 +9,8 @@ import Cart from "./components/Cart";
 import ErrorPage from "./components/ErrorPage";
 import { Login } from "./components/Login";
 import { RegisterNewUser } from "./components/RegisterNewUser";
-
+import AdminPanel from "./components/AdminPanel";
+import AdminLogin from "./components/AdminLogin";
 function App() {
   return (
     <Router>
@@ -23,6 +24,9 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/register" element={<RegisterNewUser />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/admin" element={<AdminPanel />} />
+
+        <Route path="/login/admin" element={<AdminLogin />} />
         <Route path="/error" element={<ErrorPage />} />
       </Routes>
     </Router>

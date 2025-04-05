@@ -38,14 +38,29 @@ const AppProvider = ({ children }) => {
     }
   }, []);
 
+  // const getSingleProduct = async (url) => {
+  //   dispatch({ type: "SET_SINGLE_PAGE_LOADING" });
+  //   try {
+  //     let response = await fetch(url);
+  //     let singleProduct = await response.json();
+
+  //     dispatch({ type: "SET_SINGLE_PRODUCT", payload: singleProduct });
+  //   } catch (error) {
+  //     alert("error encountered while fetching data from API");
+  //   }
+  // };
   const getSingleProduct = useCallback(async (url) => {
     dispatch({ type: "SET_SINGLE_PAGE_LOADING" });
+
     try {
       let response = await fetch(url);
       let singleProduct = await response.json();
+      console.log("API Response:", singleProduct);
+
       dispatch({ type: "SET_SINGLE_PRODUCT", payload: singleProduct });
     } catch (error) {
-      alert("error encountered while fetching data from API");
+      console.error("Error fetching product:", error);
+      dispatch({ type: "SINGLE_ERROR" });
     }
   }, []);
 

@@ -4,6 +4,8 @@ import AdminReducer from "../reducer/AdminReducer";
 const adminInitialState = {
   selectedValue: "",
   adminData: [],
+  order: [],
+  allUsers: [],
 };
 
 const AdminContext = createContext();
@@ -14,14 +16,7 @@ export const AdminContextProvider = ({ children }) => {
   useEffect(() => {
     const getAdminData = async () => {
       try {
-        const token = localStorage.getItem("token");
-
-        if (!token) {
-          console.error("No token found");
-          return;
-        }
-
-        const response = await fetch("ecommerce/product/get");
+        const response = await fetch("/ecommerce/product/get");
 
         const data = await response.json();
         dispatch({ type: "SET_ADMIN_DATA", payload: data });

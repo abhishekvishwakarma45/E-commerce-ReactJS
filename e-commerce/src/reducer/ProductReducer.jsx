@@ -32,7 +32,7 @@ export const ProductReducer = (state, action) => {
       return {
         ...state,
         isSingleLoading: false,
-        singleProduct: action.payload,
+        singleProduct: action.payload, // This should update the state
       };
     case "SINGLE_ERROR":
       return {

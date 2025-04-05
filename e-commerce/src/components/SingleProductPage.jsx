@@ -17,9 +17,16 @@ export default function SingleProductPage() {
   const { getSingleProduct, isSingleLoading, singleProduct } =
     useProductContext();
 
+  // useEffect(() => {
+  //   getSingleProduct(`ecommerce/product/get/${id}`);
+  // }, [id, getSingleProduct]);
+
   useEffect(() => {
-    getSingleProduct(`http://localhost:8081/product/get/${id}`);
-  }, [getSingleProduct, id]);
+    console.log("useEffect triggered with ID:", id);
+    if (id) {
+      getSingleProduct(`/ecommerce/product/get/${id}`);
+    }
+  }, [id, getSingleProduct]);
 
   const {
     name,

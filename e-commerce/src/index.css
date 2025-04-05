@@ -2574,154 +2574,151 @@ button.delete {
 
 .content header h1 {
   font-size: 32px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   color: #2c3e50;
 }
 
+/* Main Form Styling */
 .add-product-form {
-  background-color: white;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 900px;
-  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+  margin: 40px auto;
+  font-family: 'Roboto', sans-serif;
 }
 
+/* Title Styling */
 .add-product-form h2 {
   text-align: center;
-  font-size: 28px;
-  color: #34495e;
-  margin-bottom: 20px;
+  font-size: 32px;
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 30px;
 }
 
+/* Form Grid */
 .add-product-form form {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
 }
 
+/* Form Div Styling */
 .add-product-form form div {
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
+/* Label Styling */
 .add-product-form form label {
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 500;
   color: #7f8c8d;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
+/* Input Fields Styling */
 .add-product-form form input,
-.add-product-form form select {
-  padding: 10px;
+.add-product-form form select,
+.add-product-form form textarea {
+  padding: 12px;
   font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  transition: border-color 0.3s ease;
+  border: 1px solid #ccd1d1;
+  border-radius: 6px;
+  transition: all 0.3s ease;
 }
 
+/* Input Focus Styling */
 .add-product-form form input:focus,
-.add-product-form form select:focus {
+.add-product-form form select:focus,
+.add-product-form form textarea:focus {
   border-color: #1abc9c;
   outline: none;
+  box-shadow: 0 0 8px rgba(26, 188, 156, 0.3);
 }
 
+/* Checkboxes */
 .add-product-form form input[type="checkbox"] {
   margin-top: 10px;
 }
 
+/* File Input Styling */
+.add-product-form form input[type="file"] {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccd1d1;
+  border-radius: 6px;
+}
+
+/* Button Styling */
 .add-product-form form button {
   background-color: #1abc9c;
   color: white;
-  padding: 12px 20px;
+  padding: 14px 24px;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
   grid-column: span 2;
-  margin-top: 20px;
+  margin-top: 30px;
+  transition: background-color 0.3s ease;
 }
 
+/* Button Hover Effect */
 .add-product-form form button:hover {
   background-color: #16a085;
 }
 
-.add-product-form form input[type="file"] {
-  padding: 5px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+/* Image Preview Styling */
+.add-product-form form td img {
+  border-radius: 6px;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin: 5px;
 }
 
-.add-product-form form .checkbox-container {
-  grid-column: span 2;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* Container Padding */
+.content {
+  padding: 2rem;
+  overflow-x: auto;
 }
 
-.add-product-form form .checkbox-container label {
-  font-size: 16px;
-  color: #34495e;
-}
-
-.manage-products {
-  margin-top: 40px;
-}
-
-.manage-products h2 {
-  font-size: 28px;
-  color: #34495e;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.manage-products-table {
+/* Table Styles */
+table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 2rem;
 }
 
-.manage-products-table th,
-.manage-products-table td {
-  padding: 12px;
+/* Table Headers */
+th,
+td {
   border: 1px solid #ddd;
-  text-align: left;
+  padding: 12px;
+  text-align: center;
+  vertical-align: middle;
 }
 
-.manage-products-table th {
-  background-color: #34495e;
-  color: white;
+th {
+  background-color: #f4f6f9;
+  font-weight: 600;
+  color: #34495e;
 }
 
-.manage-products-table tr:nth-child(even) {
-  background-color: #f9f9f9;
+/* Table Row Hover Effect */
+tr:nth-child(even) {
+  background-color: #f9fafb;
 }
 
-.manage-products-table tr:hover {
+tr:hover {
   background-color: #f1f1f1;
-}
-
-.manage-products-table button {
-  background-color: #e74c3c;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.manage-products-table button:hover {
-  background-color: #c0392b;
-}
-
-/* Form input and textarea */
-input[type="text"],
-input[type="number"],
-input[type="file"],
-input[type="checkbox"],
-textarea {
-  font-size: 16px;
 }
 
 /* Responsive Design */
@@ -2729,4 +2726,95 @@ textarea {
   .add-product-form form {
     grid-template-columns: 1fr;
   }
+
+  .add-product-form form div {
+    gap: 12px;
+  }
+
+  .add-product-form form button {
+    grid-column: span 1;
+  }
+}
+
+.dashboard-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.dashboard-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 200px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+}
+
+.dashboard-card span {
+  font-size: 2rem;
+}
+
+.dashboard-card p {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+.dashboard-card h2 {
+  font-size: 2rem;
+  margin: 0;
+  color: #333;
+}
+
+.user-table-container {
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+}
+
+.user-table th,
+.user-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.user-table th {
+  background-color: #007bff;
+  font-weight: bold;
+}
+
+.user-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.user-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
 }

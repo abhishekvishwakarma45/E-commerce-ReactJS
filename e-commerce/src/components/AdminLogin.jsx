@@ -1,9 +1,16 @@
-import { Fragment, useCallback, useEffect, useState } from "react";
+import React, { Fragment, useState, useEffect, useCallback } from "react";
+// import { useLoginContext } from "../context/LoginContext"; // Assuming you have this context set up for managing tokens.
+import { NavLink } from "react-router-dom"; // Assuming you are using react-router for navigation.
 import useLoginContext from "../context/LoginContext";
-import LoginToastNotification from "./LoginToastNotification";
-import UnauthenticateUserToast from "./UnauthenticateUserToast";
-import { NavLink } from "react-router-dom";
-export const Login = () => {
+const LoginToastNotification = () => (
+  <div className="toast notification">Login successful!</div>
+);
+
+const UnauthenticateUserToast = () => (
+  <div className="toast error ">Authentication failed. Please try again!</div>
+);
+
+const AdminLogin = () => {
   const { getToken } = useLoginContext();
   const [credentials, setCredentials] = useState({
     username: "",
@@ -12,6 +19,7 @@ export const Login = () => {
 
   const [toast, setToast] = useState(false);
   const [Unauthenticated, setUnauthenticated] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCredentials((prev) => ({
@@ -33,6 +41,7 @@ export const Login = () => {
       setUnauthenticated(false);
     }, 3000);
   };
+
   const handleLogin = useCallback(
     async (e) => {
       e.preventDefault();
@@ -71,7 +80,7 @@ export const Login = () => {
       {toast && <LoginToastNotification />}
       {Unauthenticated && <UnauthenticateUserToast />}
       <div className="formHeading">
-        <h1>Login </h1>
+        <h1>Admin Login</h1>
       </div>
       <section className="full-height">
         <div className="container">
@@ -122,22 +131,16 @@ export const Login = () => {
                 </div>
 
                 <button type="submit" className="button-primary">
-                  Sign in
+                  <a href="/admin/login"> Sign in</a>
                 </button>
 
                 <div className="divider">
                   <p>OR</p>
                 </div>
 
-                <a href="#!" className="social-button facebook">
-                  Continue with Facebook
-                </a>
-                <a href="/login/admin" className="social-button twitter">
-                  Login As Admin
-                </a>
                 <div className="redirect">
                   <p>
-                    Not a Member?
+                    Not a Member?{" "}
                     <NavLink to="/register">
                       <span> Sign Up</span>
                     </NavLink>
@@ -151,3 +154,5 @@ export const Login = () => {
     </Fragment>
   );
 };
+
+export default AdminLogin;

@@ -10,7 +10,7 @@ import { AdminContextProvider } from "./context/AdminContext.jsx";
 import { LoginContextProvider } from "./context/LoginContext.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <AppProvider value={{ useProductContext, AppContext }}>
+  <AppProvider>
     <AdminContextProvider>
       <FilterContextProvider>
         <CartContextProvider>
